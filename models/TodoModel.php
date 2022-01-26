@@ -17,7 +17,7 @@ class TodoModel extends Model
     public function rules()
     {
         return [
-            [['key'], 'required']
+            [['id', 'key', 'title'], 'required']
         ];
     }
 }
