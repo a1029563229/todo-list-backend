@@ -51,7 +51,6 @@ $config = [
             'enableStrictParsing' => false,
             'showScriptName' => false
         ],
-
     ],
     'params' => $params,
 ];
