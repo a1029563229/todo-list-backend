@@ -7,3 +7,6 @@ services:
       - ./:/app:delegated
     ports:
       - '9999:80'
+    command:
+      RUN chown www-data:www-data /app
+
