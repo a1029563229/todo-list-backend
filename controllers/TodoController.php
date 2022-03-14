@@ -80,4 +80,17 @@ class TodoController extends Controller
         $this->todoService->deleteTodo($model);
         return ['code' => 0];
     }
+
+    public function actionActivityList() {
+        $params = Yii::$app->request->get();
+        $code = 'activity_list';
+        $parameter = '';
+        $key_last = array_key_last($params);
+        foreach ($params as $key => $value) {
+            $parameter = $parameter.$key.'='.$value;
+            if ($key !== $key_last) $parameter = $parameter.'&';
+        }
+        $mock_data = $this->todoService->getMockData($code, $parameter)['data'];
+        return json_decode($mock_data);
+    }
 }

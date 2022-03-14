@@ -37,4 +37,8 @@ class TodoService
             'is_deleted' => 1
         ], $model->id);
     }
+
+    public function getMockData(string $code, string $parameter) {
+        return TodoRepository::queryMockData($code, $parameter);
+    }
 }

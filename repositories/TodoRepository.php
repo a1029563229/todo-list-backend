@@ -38,9 +38,21 @@ class TodoRepository
     {
         $db = Yii::$app->db;
         return $db
-                ->createCommand()
-                ->update('todos', $todoData, "id = :id")
-                ->bindValue("id", $id)
-                ->execute();
+            ->createCommand()
+            ->update('todos', $todoData, "id = :id")
+            ->bindValue("id", $id)
+            ->execute();
+    }
+
+    public static function queryMockData(string $code, string $parameter)
+    {
+        $db = Yii::$app->db;
+        $sql = "SELECT `data`
+                FROM `mock_data`
+                WHERE `code` = :code AND `parameter` = :parameter";
+        return $db->createCommand($sql)
+            ->bindValue(':code', $code)
+            ->bindValue(':parameter', $parameter)
+            ->queryOne();
     }
 }
